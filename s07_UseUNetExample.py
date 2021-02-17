@@ -156,14 +156,3 @@ plt.figure(figsize=(10,10))
 plt.imshow(mag_spect_EnhancedSpeech, origin='lower')
 plt.title('Magnitude_Spectogram_Enhanced_Speech')
 plt.show()
-
-
-
-  
-
-
-
-
-
-
-
