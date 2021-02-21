@@ -13,7 +13,7 @@ Sprit : 06 - Create Enchanced Audio for Testing and Evaluate
 ##################################################
 import s00_tools as tls
 from pystoi.stoi import stoi
-from pysepm import cepstrum_distance, wss
+from pysepm import fwSNRseg, SNRseg
 #from pysepm import pesq
 #from pesq import pesq
 #from pypesq import pesq
@@ -64,32 +64,32 @@ status = sd.wait()
 
  
 # Calculate Quality & Intelligibility Measures
-# Quality - Cepstrum Distance (CD), Weighted Spectral Slope (WSS)
-CD_Overall_prev = []
-CD_Overall_aftr = []
-CD_SNR_0dB_prev = []
-CD_SNR_0dB_aftr = []
-CD_SNR_5dB_prev = []
-CD_SNR_5dB_aftr = []
-CD_SNR_10dB_prev = []
-CD_SNR_10dB_aftr = []
-CD_SNR_15dB_prev = []
-CD_SNR_15dB_aftr = []
-CD_SNR_20dB_prev = []
-CD_SNR_20dB_aftr = []
+# Quality - Segmental SNR, Frequency-Weighted Segmental SNR
+fwSNRseg_Overall_prev = []
+fwSNRseg_Overall_aftr = []
+fwSNRseg_SNR_0dB_prev = []
+fwSNRseg_SNR_0dB_aftr = []
+fwSNRseg_SNR_5dB_prev = []
+fwSNRseg_SNR_5dB_aftr = []
+fwSNRseg_SNR_10dB_prev = []
+fwSNRseg_SNR_10dB_aftr = []
+fwSNRseg_SNR_15dB_prev = []
+fwSNRseg_SNR_15dB_aftr = []
+fwSNRseg_SNR_20dB_prev = []
+fwSNRseg_SNR_20dB_aftr = []
 
-WSS_Overall_prev = []
-WSS_Overall_aftr = []
-WSS_SNR_0dB_prev = []
-WSS_SNR_0dB_aftr = []
-WSS_SNR_5dB_prev = []
-WSS_SNR_5dB_aftr = []
-WSS_SNR_10dB_prev = []
-WSS_SNR_10dB_aftr = []
-WSS_SNR_15dB_prev = []
-WSS_SNR_15dB_aftr = []
-WSS_SNR_20dB_prev = []
-WSS_SNR_20dB_aftr = []
+SNRseg_Overall_prev = []
+SNRseg_Overall_aftr = []
+SNRseg_SNR_0dB_prev = []
+SNRseg_SNR_0dB_aftr = []
+SNRseg_SNR_5dB_prev = []
+SNRseg_SNR_5dB_aftr = []
+SNRseg_SNR_10dB_prev = []
+SNRseg_SNR_10dB_aftr = []
+SNRseg_SNR_15dB_prev = []
+SNRseg_SNR_15dB_aftr = []
+SNRseg_SNR_20dB_prev = []
+SNRseg_SNR_20dB_aftr = []
 
 # Intelligibility - Short-time objective intelligibility (STOI)
 STOI_Overall_prev = []
@@ -106,88 +106,88 @@ STOI_SNR_20dB_prev = []
 STOI_SNR_20dB_aftr = []
 
 for idx in range (len(filenames_Testing_NoisySpeech)): 
-    # Calculate CD & STOI for every sample
-    CD_prev = cepstrum_distance(wavs_CleanSpeech[:, idx], wavs_NoisySpeech[:, idx], 16000)
-    CD_aftr = cepstrum_distance(wavs_CleanSpeech[:, idx], wavs_EnhancedSpeech[:, idx], 16000)
+    # Calculate fwSNRseg & STOI for every sample
+    fwSNRseg_prev = fwSNRseg(wavs_CleanSpeech[:, idx], wavs_NoisySpeech[:, idx], 16000)
+    fwSNRseg_aftr = fwSNRseg(wavs_CleanSpeech[:, idx], wavs_EnhancedSpeech[:, idx], 16000)
     
-    WSS_prev = wss(wavs_CleanSpeech[:, idx], wavs_NoisySpeech[:, idx], 16000)
-    WSS_aftr = wss(wavs_CleanSpeech[:, idx], wavs_EnhancedSpeech[:, idx], 16000)
+    SNRseg_prev = SNRseg(wavs_CleanSpeech[:, idx], wavs_NoisySpeech[:, idx], 16000)
+    SNRseg_aftr = SNRseg(wavs_CleanSpeech[:, idx], wavs_EnhancedSpeech[:, idx], 16000)
     
     STOI_prev = stoi(wavs_CleanSpeech[:, idx], wavs_NoisySpeech[:, idx], 16000, extended=True)
     STOI_aftr = stoi(wavs_CleanSpeech[:, idx], wavs_EnhancedSpeech[:, idx], 16000, extended=True)
     
     # Add to Overall
-    CD_Overall_prev.append(CD_prev)
-    CD_Overall_aftr.append(CD_aftr)
+    fwSNRseg_Overall_prev.append(fwSNRseg_prev)
+    fwSNRseg_Overall_aftr.append(fwSNRseg_aftr)
     
-    WSS_Overall_prev.append(WSS_prev)
-    WSS_Overall_aftr.append(WSS_aftr)
+    SNRseg_Overall_prev.append(SNRseg_prev)
+    SNRseg_Overall_aftr.append(SNRseg_aftr)
     
     STOI_Overall_prev.append(STOI_prev)
     STOI_Overall_aftr.append(STOI_aftr)  
     
     # Add to scesific SNR category
     if ('SNRdb_0.0' in filenames_Testing_NoisySpeech[idx]):
-        CD_SNR_0dB_prev.append(CD_prev)
-        CD_SNR_0dB_aftr.append(CD_aftr)
-        WSS_SNR_0dB_prev.append(WSS_prev)
-        WSS_SNR_0dB_aftr.append(WSS_aftr)
+        fwSNRseg_SNR_0dB_prev.append(fwSNRseg_prev)
+        fwSNRseg_SNR_0dB_aftr.append(fwSNRseg_aftr)
+        SNRseg_SNR_0dB_prev.append(SNRseg_prev)
+        SNRseg_SNR_0dB_aftr.append(SNRseg_aftr)
         STOI_SNR_0dB_prev.append(STOI_prev)
         STOI_SNR_0dB_aftr.append(STOI_aftr)
     elif ('SNRdb_5.0' in filenames_Testing_NoisySpeech[idx]):
-        CD_SNR_5dB_prev.append(CD_prev)
-        CD_SNR_5dB_aftr.append(CD_aftr)
-        WSS_SNR_5dB_prev.append(WSS_prev)
-        WSS_SNR_5dB_aftr.append(WSS_aftr)
+        fwSNRseg_SNR_5dB_prev.append(fwSNRseg_prev)
+        fwSNRseg_SNR_5dB_aftr.append(fwSNRseg_aftr)
+        SNRseg_SNR_5dB_prev.append(SNRseg_prev)
+        SNRseg_SNR_5dB_aftr.append(SNRseg_aftr)
         STOI_SNR_5dB_prev.append(STOI_prev)
         STOI_SNR_5dB_aftr.append(STOI_aftr)       
     elif ('SNRdb_10.0' in filenames_Testing_NoisySpeech[idx]):
-        CD_SNR_10dB_prev.append(CD_prev)
-        CD_SNR_10dB_aftr.append(CD_aftr)
-        WSS_SNR_10dB_prev.append(WSS_prev)
-        WSS_SNR_10dB_aftr.append(WSS_aftr)
+        fwSNRseg_SNR_10dB_prev.append(fwSNRseg_prev)
+        fwSNRseg_SNR_10dB_aftr.append(fwSNRseg_aftr)
+        SNRseg_SNR_10dB_prev.append(SNRseg_prev)
+        SNRseg_SNR_10dB_aftr.append(SNRseg_aftr)
         STOI_SNR_10dB_prev.append(STOI_prev)
         STOI_SNR_10dB_aftr.append(STOI_aftr)
     elif ('SNRdb_15.0' in filenames_Testing_NoisySpeech[idx]):
-        CD_SNR_15dB_prev.append(CD_prev)
-        CD_SNR_15dB_aftr.append(CD_aftr)
-        WSS_SNR_15dB_prev.append(WSS_prev)
-        WSS_SNR_15dB_aftr.append(WSS_aftr)
+        fwSNRseg_SNR_15dB_prev.append(fwSNRseg_prev)
+        fwSNRseg_SNR_15dB_aftr.append(fwSNRseg_aftr)
+        SNRseg_SNR_15dB_prev.append(SNRseg_prev)
+        SNRseg_SNR_15dB_aftr.append(SNRseg_aftr)
         STOI_SNR_15dB_prev.append(STOI_prev)
         STOI_SNR_15dB_aftr.append(STOI_aftr)
     elif ('SNRdb_20.0' in filenames_Testing_NoisySpeech[idx]):
-        CD_SNR_20dB_prev.append(CD_prev)
-        CD_SNR_20dB_aftr.append(CD_aftr)
-        WSS_SNR_20dB_prev.append(WSS_prev)
-        WSS_SNR_20dB_aftr.append(WSS_aftr)
+        fwSNRseg_SNR_20dB_prev.append(fwSNRseg_prev)
+        fwSNRseg_SNR_20dB_aftr.append(fwSNRseg_aftr)
+        SNRseg_SNR_20dB_prev.append(SNRseg_prev)
+        SNRseg_SNR_20dB_aftr.append(SNRseg_aftr)
         STOI_SNR_20dB_prev.append(STOI_prev)
         STOI_SNR_20dB_aftr.append(STOI_aftr)
                 
         
 # Compute & Print Averages
-CD_t = Texttable()
-CD_t.add_rows([
-    ['SNR_Level', 'CD_Noisy_vs_Clean', 'CD_Enchanced_vs_Clean'],
-    ['SNR_0dB', sum(CD_SNR_0dB_prev)/len(CD_SNR_0dB_prev), sum(CD_SNR_0dB_aftr)/len(CD_SNR_0dB_aftr)],
-    ['SNR_5dB', sum(CD_SNR_5dB_prev)/len(CD_SNR_5dB_prev), sum(CD_SNR_5dB_aftr)/len(CD_SNR_5dB_aftr)],
-    ['SNR_10dB', sum(CD_SNR_10dB_prev)/len(CD_SNR_10dB_prev), sum(CD_SNR_10dB_aftr)/len(CD_SNR_10dB_aftr)],
-    ['SNR_15dB', sum(CD_SNR_15dB_prev)/len(CD_SNR_15dB_prev), sum(CD_SNR_15dB_aftr)/len(CD_SNR_15dB_aftr)],
-    ['SNR_20dB', sum(CD_SNR_20dB_prev)/len(CD_SNR_20dB_prev), sum(CD_SNR_20dB_aftr)/len(CD_SNR_20dB_aftr)],
-    ['Overall', sum(CD_Overall_prev)/len(CD_Overall_prev), sum(CD_Overall_aftr)/len(CD_Overall_aftr)],
+fwSNRseg_t = Texttable()
+fwSNRseg_t.add_rows([
+    ['SNR_Level', 'fwSNRseg_Noisy_vs_Clean', 'fwSNRseg_Enchanced_vs_Clean'],
+    ['SNR_0dB', sum(fwSNRseg_SNR_0dB_prev)/len(fwSNRseg_SNR_0dB_prev), sum(fwSNRseg_SNR_0dB_aftr)/len(fwSNRseg_SNR_0dB_aftr)],
+    ['SNR_5dB', sum(fwSNRseg_SNR_5dB_prev)/len(fwSNRseg_SNR_5dB_prev), sum(fwSNRseg_SNR_5dB_aftr)/len(fwSNRseg_SNR_5dB_aftr)],
+    ['SNR_10dB', sum(fwSNRseg_SNR_10dB_prev)/len(fwSNRseg_SNR_10dB_prev), sum(fwSNRseg_SNR_10dB_aftr)/len(fwSNRseg_SNR_10dB_aftr)],
+    ['SNR_15dB', sum(fwSNRseg_SNR_15dB_prev)/len(fwSNRseg_SNR_15dB_prev), sum(fwSNRseg_SNR_15dB_aftr)/len(fwSNRseg_SNR_15dB_aftr)],
+    ['SNR_20dB', sum(fwSNRseg_SNR_20dB_prev)/len(fwSNRseg_SNR_20dB_prev), sum(fwSNRseg_SNR_20dB_aftr)/len(fwSNRseg_SNR_20dB_aftr)],
+    ['Overall', sum(fwSNRseg_Overall_prev)/len(fwSNRseg_Overall_prev), sum(fwSNRseg_Overall_aftr)/len(fwSNRseg_Overall_aftr)],
     ])
-print(CD_t.draw())
+print(fwSNRseg_t.draw())
 
-WSS_t = Texttable()
-WSS_t.add_rows([
-    ['SNR_Level', 'WSS_Noisy_vs_Clean', 'WSS_Enchanced_vs_Clean'],
-    ['SNR_0dB', sum(WSS_SNR_0dB_prev)/len(WSS_SNR_0dB_prev), sum(WSS_SNR_0dB_aftr)/len(WSS_SNR_0dB_aftr)],
-    ['SNR_5dB', sum(WSS_SNR_5dB_prev)/len(WSS_SNR_5dB_prev), sum(WSS_SNR_5dB_aftr)/len(WSS_SNR_5dB_aftr)],
-    ['SNR_10dB', sum(WSS_SNR_10dB_prev)/len(WSS_SNR_10dB_prev), sum(WSS_SNR_10dB_aftr)/len(WSS_SNR_10dB_aftr)],
-    ['SNR_15dB', sum(WSS_SNR_15dB_prev)/len(WSS_SNR_15dB_prev), sum(WSS_SNR_15dB_aftr)/len(WSS_SNR_15dB_aftr)],
-    ['SNR_20dB', sum(WSS_SNR_20dB_prev)/len(WSS_SNR_20dB_prev), sum(WSS_SNR_20dB_aftr)/len(WSS_SNR_20dB_aftr)],
-    ['Overall', sum(WSS_Overall_prev)/len(WSS_Overall_prev), sum(WSS_Overall_aftr)/len(WSS_Overall_aftr)],
+SNRseg_t = Texttable()
+SNRseg_t.add_rows([
+    ['SNR_Level', 'SNRseg_Noisy_vs_Clean', 'SNRseg_Enchanced_vs_Clean'],
+    ['SNR_0dB', sum(SNRseg_SNR_0dB_prev)/len(SNRseg_SNR_0dB_prev), sum(SNRseg_SNR_0dB_aftr)/len(SNRseg_SNR_0dB_aftr)],
+    ['SNR_5dB', sum(SNRseg_SNR_5dB_prev)/len(SNRseg_SNR_5dB_prev), sum(SNRseg_SNR_5dB_aftr)/len(SNRseg_SNR_5dB_aftr)],
+    ['SNR_10dB', sum(SNRseg_SNR_10dB_prev)/len(SNRseg_SNR_10dB_prev), sum(SNRseg_SNR_10dB_aftr)/len(SNRseg_SNR_10dB_aftr)],
+    ['SNR_15dB', sum(SNRseg_SNR_15dB_prev)/len(SNRseg_SNR_15dB_prev), sum(SNRseg_SNR_15dB_aftr)/len(SNRseg_SNR_15dB_aftr)],
+    ['SNR_20dB', sum(SNRseg_SNR_20dB_prev)/len(SNRseg_SNR_20dB_prev), sum(SNRseg_SNR_20dB_aftr)/len(SNRseg_SNR_20dB_aftr)],
+    ['Overall', sum(SNRseg_Overall_prev)/len(SNRseg_Overall_prev), sum(SNRseg_Overall_aftr)/len(SNRseg_Overall_aftr)],
     ])
-print(WSS_t.draw())
+print(SNRseg_t.draw())
 
 STOI_t = Texttable()
 STOI_t.add_rows([

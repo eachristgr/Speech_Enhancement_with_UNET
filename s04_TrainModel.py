@@ -34,6 +34,7 @@ print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('
 # Load Train X, Y (NoisySpeech -> CleanSpeech)
 x_train = np.load('Dataset_My_Spects\\Training_NoisySpeech_spect_arrary.npy')
 y_train = np.load('Dataset_My_Spects\\Training_CleanSpeech_spect_arrary.npy')
+#y_train = np.load('Dataset_My_Spects\\Training_Noise_spect_arrary.npy')
 
 
 # Normalize Data -> pws kanonikopoiw to Y?
@@ -44,12 +45,12 @@ for i in range(x_train.shape[0]):
     x_train[i,:,:] = x_train[i,:,:] / maxX
     
     y_train[i,:,:] = (y_train[i,:,:] - min_x) / maxX
-    """
+    '''
     min_y = y_train[i,:,:].min()
     y_train[i,:,:] = y_train[i,:,:] - min_y
     maxy = y_train[i,:,:].max()
     y_train[i,:,:] = y_train[i,:,:] / maxy
-    """
+   '''
 
 
 # Reshape to fit input layer
@@ -69,7 +70,7 @@ my_unet = unet.my_unet()
 # tf.keras.losses.Huber()
 # tf.keras.losses.mean_squared_error
 # tf.keras.losses.mean_absolute_error
-my_unet.compile(optimizer = tf.keras.optimizers.Adam(lr=5e-4), loss = tf.keras.losses.mean_squared_error, metrics = [])
+my_unet.compile(optimizer = tf.keras.optimizers.Adam(lr=5e-4), loss = tf.keras.losses.Huber(), metrics = [])
 callback = [callbacks.EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)]
 history = my_unet.fit(x_train, y_train, batch_size=5, shuffle=True, epochs=20, validation_split=0.2, callbacks=callback, verbose=2)
 

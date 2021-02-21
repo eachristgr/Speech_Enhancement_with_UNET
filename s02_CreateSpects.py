@@ -86,6 +86,20 @@ Testing_NoisySpeech_spect_arrary, Testing_NoisySpeech_phase_array = filenames_to
 np.save('Dataset_My_Spects\\Testing_NoisySpeech_spect_arrary', np.array(Testing_NoisySpeech_spect_arrary))
 np.save('Dataset_My_Spects\\Testing_NoisySpeech_phase_array', np.array(Testing_NoisySpeech_phase_array))
 
+
+"""
+# Create Testing Noise Spectrograms
+Testing_Noise_path = "Dataset_My_Wavs\\Testing_Noise"
+Testing_Noise_filenames = [os.path.join(Testing_Noise_path, f) for f in os.listdir(Testing_Noise_path) if f.endswith(".wav")]
+Testing_Noise_filenames.sort()
+
+Testing_Noise_spect_arrary, Testing_Noise_phase_array = filenames_to_spect(Testing_Noise_filenames)
+np.save('Dataset_My_Spects\\Testing_Noise_spect_arrary', np.array(Testing_Noise_spect_arrary))
+np.save('Dataset_My_Spects\\Testing_Noise_phase_array', np.array(Testing_Noise_phase_array))
+del Testing_Noise_spect_arrary, Testing_Noise_phase_array
+"""
+
+
 # Create Testing CleanSpeach Spectrograms
 Testing_NoisySpeech_path = "Dataset_My_Wavs\\Testing_CleanSpeech"
 Testing_CleanSpeech_filenames = Testing_NoisySpeech_filenames
