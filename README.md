@@ -2,7 +2,7 @@
 
 ##### **Aristotle University of Thessaloniki - Electrical and Computer Engineering**
 
-##### **Course : Video & Audio Technology**
+##### **Course : Audio & Video Technology**
 
 ##### **Authors : [Emmanouil Christos](https://github.com/eachristgr), [ Amoiridis Vasilios](https://github.com/vamoirid), [Anagnostou Athanasios](https://github.com/Nassos-Anagnostou), [Tsoukias Stefanos](https://github.com/tsoukias)**
 
