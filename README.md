@@ -8,7 +8,7 @@
 
 ------
 
-This repository contains the assignment for the course of Video & Audio Technology.
+This repository contains the assignment for the course of Audio & Video Technology.
 
 The aim was to get to know the branch of deep learning and to apply it to the problem of the de-noiseization of human speech.
 
