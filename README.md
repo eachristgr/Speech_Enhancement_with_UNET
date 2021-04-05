@@ -24,5 +24,5 @@ In the Dataset_MS_SNSD and Dataset_My_Wavs folders there are screenshots that sh
 
 The model used can be found in the **s03_InitializeModel.py** file and can be seen in the following image:
 
-<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/UNET_Model_Saves/UNET_Shape.png?raw=true" width="200"/> 
+<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/UNET_Model_Saves/UNET_Shape.png?raw=true"/> 
 
