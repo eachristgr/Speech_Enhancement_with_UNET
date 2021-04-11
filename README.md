@@ -24,7 +24,7 @@ In the **Dataset_MS_SNSD** and **Dataset_My_Wavs** folders there are screenshots
 
 The model used can be found in the **s03_InitializeModel.py** file and can be seen in the following image:
 
-<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/UNET_Model_Saves/UNET_Shape.png?raw=true"/> 
+<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/__imgs/UNET_Shape.png?raw=true?raw=true"/> 
 
 Note that the input of the model is noisy speech magnitude spectrometers while as an output two cases were examined. In the first the output was the magnitude spectrograms of the noise and in the second the magnitude spectrograms of the clean speech.
 
