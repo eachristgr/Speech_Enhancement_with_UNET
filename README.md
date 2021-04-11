@@ -12,6 +12,16 @@ This repository contains the assignment for the course of Audio & Video Technolo
 
 The aim was to get to know the branch of deep learning and to apply it to the problem of the de-noiseization of human speech.
 
+To achieve that, the following two systems were designed and evaluated:
+
+***1st Case*** - The U_NET estimates the magnitude spectrogram of clean speech.
+
+<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/__imgs/SpeechEnhancement_FlowChart_01.png?raw=true?raw=true"/> 
+
+***2nd Case*** - The U_NET estimates the magnitude spectrogram of noise.
+
+<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/__imgs/SpeechEnhancement_FlowChart_02.png?raw=true?raw=true"/> 
+
 ## Dataset
 
 The dataset used is [MS-SNSD](https://github.com/microsoft/MS-SNSD) (Microsoft Scalable Noisy Speech Database).
@@ -26,7 +36,7 @@ The model used can be found in the **s03_InitializeModel.py** file and can be se
 
 <img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/__imgs/UNET_Shape.png?raw=true?raw=true"/> 
 
-Note that the input of the model is noisy speech magnitude spectrometers while as an output two cases were examined. In the first the output was the magnitude spectrograms of the noise and in the second the magnitude spectrograms of the clean speech.
+Note that the input of the model is noisy speech magnitude spectrometers while as an output two cases were examined. As stated above, in the first the output was the magnitude spectrograms of the noise and in the second the magnitude spectrograms of the enhanced speech.
 
 Τhe **s00_tools.py** and **s02_CreateSpects.py** files show the process by which the spectrograms were created and in the **Dataset_My_Spects** folder there is an screenshot that show how the spectrograms were saved.
 
