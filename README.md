@@ -26,7 +26,7 @@ The model used can be found in the **s03_InitializeModel.py** file and can be se
 
 <img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/UNET_Model_Saves/UNET_Shape.png?raw=true"/> 
 
-Note that the input of the model is noisy speech magnitude spectrometers while as an output two cases were examined. In the first the output was the magnitude spectrograms of the noise and in the second  the magnitude spectrograms of the clean speech.
+Note that the input of the model is noisy speech magnitude spectrometers while as an output two cases were examined. In the first the output was the magnitude spectrograms of the noise and in the second the magnitude spectrograms of the clean speech.
 
 Τhe **s00_tools.py** and **s02_CreateSpects.py** files show the process by which the spectrograms were created and in the **Dataset_My_Spects** folder there is an screenshot that show how the spectrograms were saved.
 
