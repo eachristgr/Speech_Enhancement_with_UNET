@@ -16,11 +16,11 @@ To achieve that, the following two systems were designed and evaluated:
 
 ***1st Case*** - The U_NET estimates the magnitude spectrogram of clean speech.
 
-<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/__imgs/SpeechEnhancement_FlowChart_01.png?raw=true?raw=true"/> 
+<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/__imgs/SpeechEnhancement_FlowChart_01.png?raw=true?raw=true" height="400"/> 
 
 ***2nd Case*** - The U_NET estimates the magnitude spectrogram of noise.
 
-<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/__imgs/SpeechEnhancement_FlowChart_02.png?raw=true?raw=true"/> 
+<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/__imgs/SpeechEnhancement_FlowChart_02.png?raw=true?raw=true" height="400"/> 
 
 ## Dataset
 
@@ -34,7 +34,7 @@ In the **Dataset_MS_SNSD** and **Dataset_My_Wavs** folders there are screenshots
 
 The model used can be found in the **s03_InitializeModel.py** file and can be seen in the following image:
 
-<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/__imgs/UNET_Shape.png?raw=true?raw=true"/> 
+<img src="https://github.com/eachristgr/Speech_Enhancement_with_UNET/blob/master/__imgs/UNET_Shape.png?raw=true?raw=true" height="400"/> 
 
 Note that the input of the model is noisy speech magnitude spectrometers while as an output two cases were examined. As stated above, in the first the output was the magnitude spectrograms of the noise and in the second the magnitude spectrograms of the enhanced speech.
 
