@@ -1,10 +1,9 @@
 # Speech Enhancement with UNET
 
-##### **Aristotle University of Thessaloniki - Electrical and Computer Engineering**
-
-##### **Course : Audio & Video Technology**
-
-##### **Authors : [Emmanouil Christos](https://github.com/eachristgr), [ Amoiridis Vasilios](https://github.com/vamoirid), [Anagnostou Athanasios](https://github.com/Nassos-Anagnostou), [Tsoukias Stefanos](https://github.com/tsoukias)**
+Aristotle University of Thessaloniki  
+Electrical & Computer Engineering Department  
+Course : Audio & Video Technology  
+Authors : [Emmanouil Christos](https://github.com/eachristgr), [ Amoiridis Vasilios](https://github.com/vamoirid), [Anagnostou Athanasios](https://github.com/Nassos-Anagnostou), [Tsoukias Stefanos](https://github.com/tsoukias)
 
 ------
 
@@ -56,4 +55,4 @@ If you want to test the model in your audio file you have to change the filename
 
 ------
 
-- It is noted that the complete research that was done, more details of the procedure that was followed but also the test results can be found in the **report.pdf** which is written in Greek.
+- It is noted that the complete research that was done, more details of the procedure that was followed but also the test results can be found in the **[report.pdf](./report.pdf)** which is written in Greek.
